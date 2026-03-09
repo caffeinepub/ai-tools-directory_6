@@ -22,6 +22,8 @@ export interface backendInterface {
     getAllTools(): Promise<Array<Tool>>;
     getCategories(): Promise<Array<string>>;
     getLatestTools(limit: bigint): Promise<Array<Tool>>;
+    getSimilarTools(toolId: bigint, limit: bigint): Promise<Array<Tool>>;
+    getToolById(id: bigint): Promise<Tool | null>;
     getToolsByCategory(category: string): Promise<Array<Tool>>;
     searchTools(searchTerm: string): Promise<Array<Tool>>;
 }

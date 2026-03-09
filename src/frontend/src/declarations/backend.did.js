@@ -24,6 +24,8 @@ export const idlService = IDL.Service({
   'getAllTools' : IDL.Func([], [IDL.Vec(Tool)], ['query']),
   'getCategories' : IDL.Func([], [IDL.Vec(IDL.Text)], ['query']),
   'getLatestTools' : IDL.Func([IDL.Nat], [IDL.Vec(Tool)], ['query']),
+  'getSimilarTools' : IDL.Func([IDL.Nat, IDL.Nat], [IDL.Vec(Tool)], ['query']),
+  'getToolById' : IDL.Func([IDL.Nat], [IDL.Opt(Tool)], ['query']),
   'getToolsByCategory' : IDL.Func([IDL.Text], [IDL.Vec(Tool)], ['query']),
   'searchTools' : IDL.Func([IDL.Text], [IDL.Vec(Tool)], ['query']),
 });
@@ -47,6 +49,12 @@ export const idlFactory = ({ IDL }) => {
     'getAllTools' : IDL.Func([], [IDL.Vec(Tool)], ['query']),
     'getCategories' : IDL.Func([], [IDL.Vec(IDL.Text)], ['query']),
     'getLatestTools' : IDL.Func([IDL.Nat], [IDL.Vec(Tool)], ['query']),
+    'getSimilarTools' : IDL.Func(
+        [IDL.Nat, IDL.Nat],
+        [IDL.Vec(Tool)],
+        ['query'],
+      ),
+    'getToolById' : IDL.Func([IDL.Nat], [IDL.Opt(Tool)], ['query']),
     'getToolsByCategory' : IDL.Func([IDL.Text], [IDL.Vec(Tool)], ['query']),
     'searchTools' : IDL.Func([IDL.Text], [IDL.Vec(Tool)], ['query']),
   });

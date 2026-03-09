@@ -67,3 +67,29 @@ export function useLatestTools(limit: number) {
     refetchInterval: 60 * 1000,
   });
 }
+
+export function useGetToolById(toolId: string | undefined) {
+  const { actor, isFetching } = useActor();
+  return useQuery<Tool | null>({
+    queryKey: ["tools", "byId", toolId],
+    queryFn: async () => {
+      if (!actor || !toolId) return null;
+      return actor.getToolById(BigInt(toolId));
+    },
+    enabled: !!actor && !isFetching && !!toolId,
+    staleTime: 5 * 60 * 1000,
+  });
+}
+
+export function useGetSimilarTools(toolId: string | undefined, limit = 4) {
+  const { actor, isFetching } = useActor();
+  return useQuery<Tool[]>({
+    queryKey: ["tools", "similar", toolId, limit],
+    queryFn: async () => {
+      if (!actor || !toolId) return [];
+      return actor.getSimilarTools(BigInt(toolId), BigInt(limit));
+    },
+    enabled: !!actor && !isFetching && !!toolId,
+    staleTime: 5 * 60 * 1000,
+  });
+}

@@ -25,6 +25,8 @@ export interface _SERVICE {
   'getAllTools' : ActorMethod<[], Array<Tool>>,
   'getCategories' : ActorMethod<[], Array<string>>,
   'getLatestTools' : ActorMethod<[bigint], Array<Tool>>,
+  'getSimilarTools' : ActorMethod<[bigint, bigint], Array<Tool>>,
+  'getToolById' : ActorMethod<[bigint], [] | [Tool]>,
   'getToolsByCategory' : ActorMethod<[string], Array<Tool>>,
   'searchTools' : ActorMethod<[string], Array<Tool>>,
 }

@@ -51,6 +51,11 @@ export function Navbar() {
       label: "Categories",
       ocid: "nav.categories.link",
     },
+    {
+      to: "/compare" as const,
+      label: "Compare",
+      ocid: "nav.compare.link",
+    },
   ];
 
   // Close dropdown on outside click

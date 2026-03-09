@@ -104,9 +104,12 @@ export interface backendInterface {
     getAllTools(): Promise<Array<Tool>>;
     getCategories(): Promise<Array<string>>;
     getLatestTools(limit: bigint): Promise<Array<Tool>>;
+    getSimilarTools(toolId: bigint, limit: bigint): Promise<Array<Tool>>;
+    getToolById(id: bigint): Promise<Tool | null>;
     getToolsByCategory(category: string): Promise<Array<Tool>>;
     searchTools(searchTerm: string): Promise<Array<Tool>>;
 }
+import type { Tool as _Tool } from "./declarations/backend.did.d.ts";
 export class Backend implements backendInterface {
     constructor(private actor: ActorSubclass<_SERVICE>, private _uploadFile: (file: ExternalBlob) => Promise<Uint8Array>, private _downloadFile: (file: Uint8Array) => Promise<ExternalBlob>, private processError?: (error: unknown) => never){}
     async addPendingTool(arg0: Tool): Promise<void> {
@@ -179,6 +182,34 @@ export class Backend implements backendInterface {
             return result;
         }
     }
+    async getSimilarTools(arg0: bigint, arg1: bigint): Promise<Array<Tool>> {
+        if (this.processError) {
+            try {
+                const result = await this.actor.getSimilarTools(arg0, arg1);
+                return result;
+            } catch (e) {
+                this.processError(e);
+                throw new Error("unreachable");
+            }
+        } else {
+            const result = await this.actor.getSimilarTools(arg0, arg1);
+            return result;
+        }
+    }
+    async getToolById(arg0: bigint): Promise<Tool | null> {
+        if (this.processError) {
+            try {
+                const result = await this.actor.getToolById(arg0);
+                return from_candid_opt_n1(this._uploadFile, this._downloadFile, result);
+            } catch (e) {
+                this.processError(e);
+                throw new Error("unreachable");
+            }
+        } else {
+            const result = await this.actor.getToolById(arg0);
+            return from_candid_opt_n1(this._uploadFile, this._downloadFile, result);
+        }
+    }
     async getToolsByCategory(arg0: string): Promise<Array<Tool>> {
         if (this.processError) {
             try {
@@ -207,6 +238,9 @@ export class Backend implements backendInterface {
             return result;
         }
     }
+}
+function from_candid_opt_n1(_uploadFile: (file: ExternalBlob) => Promise<Uint8Array>, _downloadFile: (file: Uint8Array) => Promise<ExternalBlob>, value: [] | [_Tool]): Tool | null {
+    return value.length === 0 ? null : value[0];
 }
 export interface CreateActorOptions {
     agent?: Agent;

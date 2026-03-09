@@ -12,9 +12,11 @@ import { BestAIToolsPage } from "./pages/BestAIToolsPage";
 import { BestAIVideoGeneratorsPage } from "./pages/BestAIVideoGeneratorsPage";
 import { CategoriesPage } from "./pages/CategoriesPage";
 import { CategorySeoPage } from "./pages/CategorySeoPage";
+import { ComparisonPage } from "./pages/ComparisonPage";
 import { FreeAIToolsPage } from "./pages/FreeAIToolsPage";
 import { HomePage } from "./pages/HomePage";
 import { NewsFeedPage } from "./pages/NewsFeedPage";
+import { ToolDetailPage } from "./pages/ToolDetailPage";
 
 // Root layout
 function RootLayout() {
@@ -40,6 +42,12 @@ const categoriesRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/categories",
   component: CategoriesPage,
+});
+
+const compareRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/compare",
+  component: ComparisonPage,
 });
 
 const bestAIToolsRoute = createRoute({
@@ -78,15 +86,23 @@ const categorySeoRoute = createRoute({
   component: CategorySeoPage,
 });
 
+const toolDetailRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/tool/$toolId",
+  component: ToolDetailPage,
+});
+
 const routeTree = rootRoute.addChildren([
   homeRoute,
   categoriesRoute,
+  compareRoute,
   bestAIToolsRoute,
   bestAIImageGeneratorsRoute,
   bestAIVideoGeneratorsRoute,
   freeAIToolsRoute,
   newsFeedRoute,
   categorySeoRoute,
+  toolDetailRoute,
 ]);
 
 const router = createRouter({ routeTree });

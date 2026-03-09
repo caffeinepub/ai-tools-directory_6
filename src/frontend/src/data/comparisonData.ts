@@ -1,0 +1,311 @@
+export type PriceTier = "free" | "freemium" | "paid";
+
+export type ComparisonMeta = {
+  price: string;
+  priceTier: PriceTier;
+  features: string[];
+  rating: number;
+  easeOfUse: number;
+  easeLabel: string;
+};
+
+export const comparisonData: Record<string, ComparisonMeta> = {
+  ChatGPT: {
+    price: "Free / $20/mo Pro",
+    priceTier: "freemium",
+    features: [
+      "Advanced conversational AI (GPT-4o)",
+      "Code generation & debugging",
+      "Image analysis & generation",
+      "Plugins & custom GPTs",
+      "Voice mode & real-time search",
+    ],
+    rating: 4.8,
+    easeOfUse: 4.9,
+    easeLabel: "Very Easy",
+  },
+  Claude: {
+    price: "Free / $20/mo Pro",
+    priceTier: "freemium",
+    features: [
+      "200K+ context window",
+      "Superior long-form writing",
+      "Advanced code analysis",
+      "Document & PDF understanding",
+      "Nuanced reasoning & ethics",
+    ],
+    rating: 4.7,
+    easeOfUse: 4.8,
+    easeLabel: "Very Easy",
+  },
+  "Google Gemini": {
+    price: "Free / $19.99/mo Advanced",
+    priceTier: "freemium",
+    features: [
+      "Multimodal (text, image, audio, video)",
+      "Google Workspace integration",
+      "1M token context window",
+      "Real-time Google Search access",
+      "Code execution & generation",
+    ],
+    rating: 4.6,
+    easeOfUse: 4.7,
+    easeLabel: "Very Easy",
+  },
+  "Microsoft Copilot": {
+    price: "Free / $30/mo M365",
+    priceTier: "freemium",
+    features: [
+      "Deep Microsoft 365 integration",
+      "Real-time web search with Bing",
+      "Image generation with DALL-E",
+      "Document & email drafting",
+      "Enterprise security & compliance",
+    ],
+    rating: 4.4,
+    easeOfUse: 4.6,
+    easeLabel: "Very Easy",
+  },
+  "Perplexity AI": {
+    price: "Free / $20/mo Pro",
+    priceTier: "freemium",
+    features: [
+      "AI-powered search with citations",
+      "Real-time web information",
+      "Multiple AI model access",
+      "Focus modes (academic, code, etc.)",
+      "Shareable research threads",
+    ],
+    rating: 4.6,
+    easeOfUse: 4.7,
+    easeLabel: "Very Easy",
+  },
+  Midjourney: {
+    price: "$10\u2013$60/mo",
+    priceTier: "paid",
+    features: [
+      "Photorealistic image generation",
+      "High artistic style control",
+      "Upscaling & variation tools",
+      "Commercial usage rights",
+      "Fast & relax generation modes",
+    ],
+    rating: 4.8,
+    easeOfUse: 3.8,
+    easeLabel: "Moderate",
+  },
+  "DALL-E 3": {
+    price: "Included with ChatGPT Plus",
+    priceTier: "freemium",
+    features: [
+      "Natural language to image",
+      "High prompt accuracy",
+      "Inpainting & editing",
+      "ChatGPT integration",
+      "Commercial usage rights",
+    ],
+    rating: 4.6,
+    easeOfUse: 4.7,
+    easeLabel: "Very Easy",
+  },
+  "Leonardo AI": {
+    price: "Free / $10\u2013$48/mo",
+    priceTier: "freemium",
+    features: [
+      "Fine-tuned model training",
+      "Game asset generation",
+      "Real-Time Canvas editor",
+      "3D texture generation",
+      "Team collaboration tools",
+    ],
+    rating: 4.5,
+    easeOfUse: 4.0,
+    easeLabel: "Easy",
+  },
+  "Canva AI": {
+    price: "Free / $12.99/mo Pro",
+    priceTier: "freemium",
+    features: [
+      "Text-to-image generation",
+      "Magic Design auto-layouts",
+      "Background remover & restorer",
+      "AI video generation",
+      "Brand kit & templates",
+    ],
+    rating: 4.5,
+    easeOfUse: 4.9,
+    easeLabel: "Very Easy",
+  },
+  "Adobe Firefly": {
+    price: "Free / $4.99/mo paid plans",
+    priceTier: "freemium",
+    features: [
+      "Commercially safe training data",
+      "Generative fill & expand",
+      "Text effects generation",
+      "Adobe CC deep integration",
+      "Vector & template generation",
+    ],
+    rating: 4.4,
+    easeOfUse: 4.3,
+    easeLabel: "Easy",
+  },
+  "Stable Diffusion": {
+    price: "Free (open source)",
+    priceTier: "free",
+    features: [
+      "Fully open source & local",
+      "Unlimited offline generation",
+      "Massive community extensions",
+      "ControlNet for pose control",
+      "Custom LoRA model training",
+    ],
+    rating: 4.4,
+    easeOfUse: 2.8,
+    easeLabel: "Advanced",
+  },
+  "Runway ML": {
+    price: "Free / $12\u2013$76/mo",
+    priceTier: "freemium",
+    features: [
+      "Text & image to video (Gen-3)",
+      "Video inpainting & editing",
+      "Motion brush control",
+      "Green screen & masking",
+      "Director Mode storytelling",
+    ],
+    rating: 4.7,
+    easeOfUse: 4.0,
+    easeLabel: "Easy",
+  },
+  Synthesia: {
+    price: "$22\u2013$67/mo",
+    priceTier: "paid",
+    features: [
+      "AI avatar video creation",
+      "Text-to-video in 140+ languages",
+      "Custom branded avatars",
+      "Powerpoint import",
+      "LMS & API integration",
+    ],
+    rating: 4.5,
+    easeOfUse: 4.6,
+    easeLabel: "Very Easy",
+  },
+  ElevenLabs: {
+    price: "Free / $5\u2013$330/mo",
+    priceTier: "freemium",
+    features: [
+      "Ultra-realistic text-to-speech",
+      "Voice cloning from samples",
+      "29+ language support",
+      "Real-time voice conversion",
+      "Audio AI agent builder",
+    ],
+    rating: 4.8,
+    easeOfUse: 4.5,
+    easeLabel: "Very Easy",
+  },
+  "Suno AI": {
+    price: "Free / $8\u2013$24/mo",
+    priceTier: "freemium",
+    features: [
+      "Full song generation with lyrics",
+      "Custom lyric input support",
+      "Genre & style controls",
+      "Extend & remix songs",
+      "High-fidelity audio output",
+    ],
+    rating: 4.6,
+    easeOfUse: 4.8,
+    easeLabel: "Very Easy",
+  },
+  "Jasper AI": {
+    price: "$39\u2013$99/mo",
+    priceTier: "paid",
+    features: [
+      "Marketing copy specialization",
+      "Brand voice customization",
+      "100+ writing templates",
+      "Team collaboration workspace",
+      "Integrations (Surfer, Grammarly)",
+    ],
+    rating: 4.4,
+    easeOfUse: 4.3,
+    easeLabel: "Easy",
+  },
+  "Copy.ai": {
+    price: "Free / $49/mo Pro",
+    priceTier: "freemium",
+    features: [
+      "Sales & marketing automation",
+      "GTM workflows builder",
+      "200+ content templates",
+      "Multi-language support",
+      "CRM & Zapier integration",
+    ],
+    rating: 4.3,
+    easeOfUse: 4.5,
+    easeLabel: "Very Easy",
+  },
+  Grammarly: {
+    price: "Free / $12\u2013$15/mo Pro",
+    priceTier: "freemium",
+    features: [
+      "Real-time grammar correction",
+      "Tone & clarity suggestions",
+      "Plagiarism checker",
+      "Browser & app integrations",
+      "AI generative writing assistant",
+    ],
+    rating: 4.6,
+    easeOfUse: 4.9,
+    easeLabel: "Very Easy",
+  },
+  "Notion AI": {
+    price: "$8/mo add-on",
+    priceTier: "paid",
+    features: [
+      "In-document AI generation",
+      "Database & project AI summaries",
+      "Q&A over workspace knowledge",
+      "Auto-fill & template generation",
+      "Meeting notes summarization",
+    ],
+    rating: 4.4,
+    easeOfUse: 4.5,
+    easeLabel: "Very Easy",
+  },
+  "GitHub Copilot": {
+    price: "Free / $10\u2013$19/mo",
+    priceTier: "freemium",
+    features: [
+      "Real-time code completion",
+      "Chat in IDE & CLI",
+      "Multi-file code editing",
+      "PR description generation",
+      "Vulnerability detection",
+    ],
+    rating: 4.7,
+    easeOfUse: 4.5,
+    easeLabel: "Very Easy",
+  },
+};
+
+export const defaultComparisonMeta: ComparisonMeta = {
+  price: "Visit website",
+  priceTier: "freemium",
+  features: [
+    "AI-powered features",
+    "Web-based access",
+    "Regular updates",
+    "User-friendly interface",
+  ],
+  rating: 4.0,
+  easeOfUse: 4.0,
+  easeLabel: "Easy",
+};
+
+export function getComparisonMeta(toolName: string): ComparisonMeta {
+  return comparisonData[toolName] ?? defaultComparisonMeta;
+}

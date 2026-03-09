@@ -8,8 +8,6 @@ import Int "mo:core/Int";
 import Time "mo:core/Time";
 import Order "mo:core/Order";
 
-
-
 actor {
   type Tool = {
     id : Nat;
@@ -240,5 +238,42 @@ actor {
       func(a, b) { Int.compare(b.dateAdded, a.dateAdded) }
     );
     sortedTools.sliceToArray(0, Nat.min(limit, sortedTools.size()));
+  };
+
+  // NEW FUNCTIONS
+
+  public query ({ caller = _ }) func getToolById(id : Nat) : async ?Tool {
+    toolsMap.get(id);
+  };
+
+  public query ({ caller = _ }) func getSimilarTools(toolId : Nat, limit : Nat) : async [Tool] {
+    switch (toolsMap.get(toolId)) {
+      case (null) { [] };
+      case (?tool) {
+        let sameCategory = toolsMap.values().toArray().filter(
+          func(t) { t.id != tool.id and t.category == tool.category }
+        );
+
+        let sortedSameCategory = sameCategory.sort(
+          func(a, b) { Int.compare(b.dateAdded, a.dateAdded) }
+        );
+
+        let filteredCategory = sortedSameCategory.sliceToArray(0, Nat.min(limit, sortedSameCategory.size()));
+
+        if (filteredCategory.size() == limit) { return filteredCategory };
+
+        let others = toolsMap.values().toArray().filter(
+          func(t) { t.id != tool.id and t.category != tool.category }
+        );
+        let sortedOthers = others.sort(
+          func(a, b) { Int.compare(b.dateAdded, a.dateAdded) }
+        );
+        let remaining = limit - filteredCategory.size();
+
+        let finalOthers = sortedOthers.sliceToArray(0, Nat.min(remaining, sortedOthers.size()));
+
+        filteredCategory.concat(finalOthers);
+      };
+    };
   };
 };
